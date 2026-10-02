@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LAM ANH IT — System Toolkit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-logo">H</div>
+      <div><strong>LAM ANH IT</strong><span>SYSTEM CENTER • 2026</span></div>
+    </div>
+
+    <div class="menu-label">HỆ THỐNG</div>
+    <nav>
+      <button class="nav active" data-page="dashboard">◈ <span>Tổng quan</span></button>
+      <button class="nav" data-page="hardware">▣ <span>Kiểm tra cấu hình</span></button>
+      <button class="nav" data-page="security">◆ <span>Bảo mật Windows</span></button>
+      <button class="nav" data-page="startup">↗ <span>Startup Manager</span></button>
+      <button class="nav" data-page="software">▦ <span>Software Manager</span></button>
+    </nav>
+
+    <div class="menu-label">MẠNG & CÔNG CỤ</div>
+    <nav>
+      <button class="nav" data-page="network">◎ <span>Network Center</span></button>
+      <button class="nav" data-page="firewall">◉ <span>Firewall Manager</span></button>
+      <button class="nav" data-page="shutdown">⏻ <span>Auto Shutdown</span></button>
+    </nav>
+
+    <div class="profile">
+      <div class="avatar">NH</div>
+      <div><b>Vũ Thị Lâm Anh</b><small>Administrator</small></div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <button class="icon-btn mobile" id="menuBtn">☰</button>
+      <div>
+        <h2 id="pageTitle">Trung tâm điều khiển</h2>
+        <p>LAM ANH IT CENTER • Personal System Toolkit</p>
+      </div>
+      <div class="header-actions">
+        <span class="online"><i></i> Hệ thống sẵn sàng</span>
+        <span id="clock"></span>
+        <button class="icon-btn" id="themeBtn">☾</button>
+      </div>
+    </header>
+
+    <section class="page active" id="dashboard">
+      <div class="hero">
+        <div>
+          <span class="eyebrow">SYSTEM COMMAND CENTER</span>
+          <h1>Xin chào, Lâm Anh 👋</h1>
+          <p>Kiểm tra nhanh tình trạng thiết bị, kết nối mạng và các thành phần hệ thống ngay trên một giao diện.</p>
+          <button class="primary" id="scanAll">⚡ Quét hệ thống ngay</button>
+        </div>
+        <div class="score-wrap">
+          <div class="score" id="score"><span>96</span><small>HEALTH</small></div>
+          <b>Tình trạng rất tốt</b>
+        </div>
+      </div>
+
+      <div class="stats">
+        <article class="stat"><div class="stat-icon">CPU</div><div><small>Bộ xử lý</small><h3 id="cpuText">Đang kiểm tra...</h3></div><span class="good">Ổn định</span></article>
+        <article class="stat"><div class="stat-icon">RAM</div><div><small>Bộ nhớ thiết bị</small><h3 id="ramText">Đang kiểm tra...</h3></div><span class="good">Ready</span></article>
+        <article class="stat"><div class="stat-icon">NET</div><div><small>Kết nối Internet</small><h3 id="netText">Checking...</h3></div><span class="good" id="netBadge">Online</span></article>
+        <article class="stat"><div class="stat-icon">OS</div><div><small>Nền tảng</small><h3 id="osText">Browser Environment</h3></div><span class="info">Detected</span></article>
+      </div>
+
+      <div class="grid2">
+        <article class="panel">
+          <div class="panel-head"><div><h3>Hiệu năng hệ thống</h3><p>Dữ liệu khả dụng từ trình duyệt</p></div><button class="ghost" id="refreshPerf">Làm mới</button></div>
+          <div class="metric"><span>CPU logical cores</span><b id="cores">—</b></div>
+          <div class="bar"><i id="cpuBar" style="width:0%"></i></div>
+          <div class="metric"><span>Device memory</span><b id="memory">—</b></div>
+          <div class="bar"><i id="ramBar" style="width:0%"></i></div>
+          <div class="metric"><span>Network status</span><b id="networkStatus">—</b></div>
+          <div class="bar"><i id="networkBar" style="width:0%"></i></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><div><h3>Kiểm tra nhanh</h3><p>Các tác vụ thường dùng</p></div></div>
+          <div class="quick-grid">
+            <button data-jump="hardware">▣<span>Thông số máy</span></button>
+            <button data-jump="network">◎<span>Kiểm tra mạng</span></button>
+            <button data-jump="security">◆<span>Bảo mật</span></button>
+            <button data-jump="shutdown">⏻<span>Hẹn giờ</span></button>
+          </div>
+        </article>
+      </div>
+
+      <article class="panel log-panel">
+        <div class="panel-head"><div><h3>Nhật ký hoạt động</h3><p>Các thao tác gần đây</p></div><button class="ghost" id="clearLog">Xóa log</button></div>
+        <div id="logs"></div>
+      </article>
+    </section>
+
+    <section class="page" id="hardware">
+      <div class="section-title"><div><span class="eyebrow">DEVICE INSPECTOR</span><h1>Kiểm tra cấu hình máy</h1><p>Thông tin mà trình duyệt cho phép website truy cập.</p></div><button class="primary" id="hardwareScan">Quét lại</button></div>
+      <div class="info-grid" id="hardwareCards"></div>
+      <article class="panel"><h3>Thông tin User Agent</h3><pre id="ua"></pre></article>
+    </section>
+
+    <section class="page" id="network">
+      <div class="section-title"><div><span class="eyebrow">NETWORK LAB</span><h1>Network Center</h1><p>Kiểm tra trạng thái Internet và các thông số kết nối trình duyệt.</p></div></div>
+      <div class="grid2">
+        <article class="panel">
+          <h3>Trạng thái kết nối</h3>
+          <div class="big-status" id="onlineStatus">● ONLINE</div>
+          <div class="details" id="connectionDetails"></div>
+        </article>
+        <article class="panel">
+          <h3>Network Test</h3>
+          <p class="muted">Đo thời gian tải một tài nguyên nhỏ để ước lượng độ trễ HTTP. Đây không phải ICMP ping.</p>
+          <button class="primary" id="pingBtn">Bắt đầu kiểm tra</button>
+          <div class="ping-result" id="pingResult">— ms</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="security">
+      <div class="section-title"><div><span class="eyebrow">SECURITY CENTER</span><h1>Bảo mật Windows</h1><p>Dashboard đánh giá và hướng dẫn bảo mật. Website không tự thay đổi Windows Defender/UAC.</p></div></div>
+      <div class="security-grid">
+        <article class="security-card"><span>◆</span><h3>Windows Security</h3><p>Kiểm tra Windows Security trực tiếp trên máy để xem trạng thái Defender.</p><button class="ghost demo-action">Đã hiểu</button></article>
+        <article class="security-card"><span>◉</span><h3>Firewall</h3><p>Khuyến nghị giữ Firewall hoạt động trên mạng Public và Private.</p><button class="ghost" data-jump="firewall">Xem hướng dẫn</button></article>
+        <article class="security-card"><span>▣</span><h3>Browser Security</h3><p id="secureContext">Đang kiểm tra...</p><button class="ghost demo-action">Chi tiết</button></article>
+      </div>
+    </section>
+
+    <section class="page" id="startup">
+      <div class="section-title"><div><span class="eyebrow">STARTUP CONTROL</span><h1>Startup Manager</h1><p>Bản web mô phỏng danh sách ứng dụng khởi động để thiết kế giao diện quản trị.</p></div><button class="primary" id="addStartup">+ Thêm ứng dụng</button></div>
+      <article class="panel table-wrap"><table><thead><tr><th>Ứng dụng</th><th>Vị trí</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody id="startupRows"></tbody></table></article>
+    </section>
+
+    <section class="page" id="software">
+      <div class="section-title"><div><span class="eyebrow">APP INVENTORY</span><h1>Software Manager</h1><p>Trình duyệt không được phép đọc danh sách phần mềm Windows; bảng dưới là dữ liệu demo cho UI.</p></div></div>
+      <article class="panel table-wrap"><table><thead><tr><th>#</th><th>Phần mềm</th><th>Nhà phát hành</th><th>Phiên bản</th><th></th></tr></thead><tbody id="softwareRows"></tbody></table></article>
+    </section>
+
+    <section class="page" id="firewall">
+      <div class="section-title"><div><span class="eyebrow">FIREWALL CENTER</span><h1>Firewall Manager</h1><p>Trang hướng dẫn an toàn; trình duyệt không có quyền bật/tắt Windows Firewall.</p></div></div>
+      <div class="stats">
+        <article class="stat"><div class="stat-icon">D</div><div><small>Domain Profile</small><h3>Kiểm tra trong Windows</h3></div></article>
+        <article class="stat"><div class="stat-icon">P</div><div><small>Private Profile</small><h3>Nên bật</h3></div><span class="good">Recommended</span></article>
+        <article class="stat"><div class="stat-icon">W</div><div><small>Public Profile</small><h3>Nên bật</h3></div><span class="good">Recommended</span></article>
+      </div>
+      <article class="panel warning"><b>🔒 Thiết kế an toàn</b><p>HOÀNG IT CENTER bản web không tự vô hiệu hóa Firewall, Defender hay các lớp bảo vệ của Windows.</p></article>
+    </section>
+
+    <section class="page" id="shutdown">
+      <div class="section-title"><div><span class="eyebrow">POWER TIMER</span><h1>Auto Shutdown</h1><p>Bộ đếm thời gian mô phỏng trên web. Website không thể ra lệnh tắt Windows nếu không có local agent.</p></div></div>
+      <div class="grid2">
+        <article class="panel">
+          <h3>Hẹn giờ nhanh</h3>
+          <label>Số phút</label><input id="minutes" type="number" min="1" value="30">
+          <div class="preset"><button data-min="15">15 phút</button><button data-min="30">30 phút</button><button data-min="60">1 giờ</button><button data-min="120">2 giờ</button></div>
+          <button class="primary" id="startTimer">Bắt đầu đếm ngược</button>
+          <button class="danger" id="cancelTimer">Hủy</button>
+        </article>
+        <article class="panel timer-box">
+          <span>THỜI GIAN CÒN LẠI</span>
+          <strong id="timer">00:30:00</strong>
+          <p>Khi hết giờ, bản demo sẽ hiển thị thông báo thay vì tắt máy.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
